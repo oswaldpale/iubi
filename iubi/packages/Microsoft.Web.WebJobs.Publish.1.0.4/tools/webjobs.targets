@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+***********************************************************************************************
+webjobs.targets
+
+WARNING:  DO NOT MODIFY this file, this file is added to your project automatically
+          through the WebJobs Publish NuGet package. If you modify this file it may
+          get out of sync when you update the package at a later date.
+
+This file extends the publish process to enable support for WebJobs.
+
+You can specify custom properties by creating the file:
+  $(MSBuildProjectDirectory)\Properties\webjobs.props
+
+Copyright (C) Microsoft Corporation. All rights reserved..
+***********************************************************************************************
+-->
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <WebJobsPropertiesFolder Condition=" '$(WebJobsPropertiesFolder)' == '' and '$(VisualBasicTargetsPath)' != '' ">$(MSBuildProjectDirectory)\My Project\</WebJobsPropertiesFolder>
+    <WebJobsPropertiesFolder Condition=" '$(WebJobsPropertiesFolder)' == '' ">$(MSBuildProjectDirectory)\Properties\</WebJobsPropertiesFolder>
+    <WebPublishExtensionsToExclude>$(WebPublishExtensionsToExclude);.tt;.settings;.targets</WebPublishExtensionsToExclude>
+  </PropertyGroup>
+  
+  <Import Project="$(WebJobsPropertiesFolder)webjobs.props" Condition="Exists('$(WebJobsPropertiesFolder)webjobs.props')" />
+
+  <PropertyGroup>
+    <WebJobsExtendWebPublish Condition=" '$(WebJobsExtendWebPublish)' == '' ">true</WebJobsExtendWebPublish>
+    <WebJobsConfigFile Condition=" '$(WebJobsConfigFile)' == '' ">$(WebJobsPropertiesFolder)webjobs-list.json</WebJobsConfigFile>
+    <WebJobConfigFile Condition=" '$(WebJobConfigFile)' == '' ">$(WebJobsPropertiesFolder)webjob-publish-settings.json</WebJobConfigFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <FilePreview>$(WhatIf)</FilePreview>
+    <FilePreview Condition="'$(FilePreview)'==''">false</FilePreview>
+  </PropertyGroup>
+
+  <Target Name="SetScheduleProperties">
+    <PropertyGroup>
+      <SubscriptionId Condition="'$(SubscriptionId)' == ''">$(_SubscriptionId)</SubscriptionId>
+      <ManagementCertificatePath Condition="'$(ManagementCertificatePath)' == ''">$(_ManagementCertificatePath)</ManagementCertificatePath>
+      <ManagementCertificatePassword Condition="'$(ManagementCertificatePassword)' == ''">$(_ManagementCertificatePassword)</ManagementCertificatePassword>
+      <ManagementCertificate Condition="'$(ManagementCertificate)' == ''">$(_ManagementCertificate)</ManagementCertificate>
+      <PublishSettingsPath Condition="'$(PublishSettingsPath)' == ''">$(_PublishSettingsPath)</PublishSettingsPath>
+    </PropertyGroup>
+  </Target>
+
+  <Import Project="$(MSBuildThisFileDirectory)\webjobs.wap.targets" Condition="'$(WebJobsExtendWebPublish)' == 'true' and Exists('$(WebJobsConfigFile)') and Exists('$(MSBuildThisFileDirectory)\webjobs.wap.targets')"/>
+  <Import Project="$(MSBuildThisFileDirectory)\webjobs.console.targets" Condition="Exists('$(WebJobConfigFile)') and Exists('$(MSBuildThisFileDirectory)\webjobs.console.targets')"/>
+</Project>

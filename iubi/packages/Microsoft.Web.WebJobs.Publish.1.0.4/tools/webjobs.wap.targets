@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+***********************************************************************************************
+webjobs.wap.targets
+
+WARNING:  DO NOT MODIFY this file, this file is added to your project automatically
+          through the WebJobs Publishing NuGet package. If you modify this file it may
+          get out of sync when you update the package at a later date.
+
+This file extends the publish process to enable support for WebJobs publishing from a Web Application
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask TaskName="ReadWebJobsConfigFile" AssemblyFile="Microsoft.Web.WebJobs.Publish.Tasks.dll"/>
+  <UsingTask TaskName="DeterminePublishedWebJobs" AssemblyFile="Microsoft.Web.WebJobs.Publish.Tasks.dll"/>
+  <UsingTask TaskName="GetScheduleMetadata" AssemblyFile="Microsoft.Web.WebJobs.Publish.Tasks.dll"/>
+  
+  <PropertyGroup Condition=" '$(WebJobsExtendWebPublish)' == 'true' ">
+    <CopyAllFilesToSingleFolderForMsdeploy>
+      AddWebJobFilesToPublish;
+      $(CopyAllFilesToSingleFolderForMsdeploy);
+    </CopyAllFilesToSingleFolderForMsdeploy>
+
+    <!-- For VS2012 -->
+    <PipelineCopyAllFilesToOneFolderForMsdeployDependsOn>
+      AddWebJobFilesToPublish;
+      $(PipelineCopyAllFilesToOneFolderForMsdeployDependsOn);
+    </PipelineCopyAllFilesToOneFolderForMsdeployDependsOn>
+
+    <!-- Required for File System -->
+    <PipelinePreDeployCopyAllFilesToOneFolderDependsOn>
+      AddWebJobFilesToPublish;
+      $(PipelinePreDeployCopyAllFilesToOneFolderDependsOn);
+    </PipelinePreDeployCopyAllFilesToOneFolderDependsOn>
+    
+    <!-- required for FS support from the VS publish dialog -->
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      AddWebJobFilesToPublish;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>    
+  </PropertyGroup>
+
+  <Target Name="DiscoverWebJobs" 
+          DependsOnTargets="$(DiscoverWebJobsDependsOn)"
+          Condition="'$(SkipApp_DataFolder)' == 'False'">
+
+    <Message Text="WebJobs: reading [$(WebJobsConfigFile)]" Importance="low"/>
+
+    <ReadWebJobsConfigFile ConfigFile="$(WebJobsConfigFile)">
+      <Output TaskParameter="JobsFound" ItemName="WebJobs"/>
+    </ReadWebJobsConfigFile>
+    
+    <Message Text="WebJobs: WebJobs found: [@(WebJobs)]" Importance="low"/>
+  </Target>
+
+  <PropertyGroup Condition=" '$(WebJobsExtendWebPublish)' == 'true' and Exists('$(WebJobsConfigFile)')">
+    <DiscoverWebJobsDependsOn>
+      $(DiscoverWebJobsDependsOn);
+    </DiscoverWebJobsDependsOn>
+    <BuildDependsOn>
+      DiscoverWebJobs;
+      $(BuildDependsOn);
+    </BuildDependsOn>
+    <AddWebJobFilesToPublishDependsOn>
+      $(AddWebJobFilesToPublishDependsOn);
+      ResolveReferences;
+      ResolveAssemblyReferences;
+      DiscoverWebJobs;
+    </AddWebJobFilesToPublishDependsOn>
+    <AddScheduledJobDependsOn>
+      SetScheduleProperties;
+      AddWebJobFilesToPublish;
+      $(AddWebJobFilesToPublishDependsOn);
+    </AddScheduledJobDependsOn>
+  </PropertyGroup>
+  
+  <!--
+  This target runs once per value in WebJobs
+  
+  Outputs
+    @(_projectRefFiles)
+    @(_projOutputs)
+  -->
+  <Target Name="AddWebJobFilesToPublish" 
+          Outputs="%(WebJobs.Identity)" 
+          BeforeTargets="MSDeployPublish"
+          DependsOnTargets="$(AddWebJobFilesToPublishDependsOn)"
+          Condition="Exists('$(WebJobsConfigFile)') and '$(SkipApp_DataFolder)' == 'False'">     
+    <!-- 
+    Determine what references need to be copied for the project by searching @(ReferenceCopyLocalPaths)
+    -->
+    <ItemGroup Condition=" '@(WebJobs)' != '' ">
+      <_tempProjFile Remove="@(_tempProjFile)"/>
+      <_tempProjFile Include="%(WebJobs.Identity)"/>
+    </ItemGroup>
+
+    <PropertyGroup Condition=" '@(WebJobs)' != '' ">
+      <_projRelativePath>%(_tempProjFile.Identity)</_projRelativePath>
+      <_projFullPath>%(_tempProjFile.FullPath)</_projFullPath>
+    </PropertyGroup>    
+    
+    <Error Text="WebJobs: WebJob with filePath &quot;%(WebJobs.Identity)&quot; specified does not exist at the specified location. Ensure that this file exists or remove the configured WebJob from $(WebJobsConfigFile)." Condition="'@(WebJobs)' != '' and  !Exists(%(WebJobs.Identity))"/>
+    
+    <ItemGroup>
+      <_projOutputs Remove="@(_projOutputs)"/>
+    </ItemGroup>
+
+    <!-- Get all the build outputs from the project -->
+    <MSBuild Projects="$(_projFullPath)" 
+             Targets="ResolveWebJobFiles"
+             Properties="Configuration=$(Configuration);WebJobPublishFromWAP=true"
+             Condition=" '@(WebJobs)' != '' ">
+      <Output ItemName="_projOutputs" TaskParameter="TargetOutputs" />
+    </MSBuild>
+    
+    <!-- Read webjobsettings.json -->
+    <MSBuild Projects="$(_projFullPath)"
+             Targets="ResolveWebJobConfig"
+             Condition=" '@(WebJobs)' != ''">
+        <Output ItemName="_projConfig" TaskParameter="TargetOutputs" />
+    </MSBuild>
+    
+    <PropertyGroup Condition=" '@(WebJobs)' != '' ">
+        <_runMode>%(_projConfig.RunMode)</_runMode>
+        <_jobPath>%(_projConfig.JobPath)</_jobPath>
+        <_projName>%(_projConfig.WebJobName)</_projName>
+    </PropertyGroup>
+
+    <Error Text="Run Mode metadata is missing from webjob [%(WebJobs.Identity)]" Condition=" '$(_runMode)' == '' and '@(WebJobs)' != '' "/>
+
+    <!-- Now add the files to the correct item in order to have them published -->
+    <ItemGroup Condition=" '@(WebJobs)' != '' ">
+      <!-- Add outputs from the project -->
+      <FilesForPackagingFromProject Include="%(_projOutputs.Identity)"
+                                    Condition=" '%(_projOutputs.TargetPath)' != '' " >
+        <DestinationRelativePath>app_data\jobs\$(_jobPath)\$(_projName)\%(_projOutputs.TargetPath)</DestinationRelativePath>
+        <FromTarget>AddWebJobFilesToPublish</FromTarget>
+        <WebJob>$(_projRelativePath)</WebJob>
+      </FilesForPackagingFromProject>      
+      <FilesForPackagingFromProject Include="%(_projOutputs.Identity)"
+                                    Condition=" '%(_projOutputs.TargetPath)' == '' " >
+        <DestinationRelativePath>app_data\jobs\$(_jobPath)\$(_projName)\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+        <FromTarget>AddWebJobFilesToPublish</FromTarget>
+        <WebJob>$(_projRelativePath)</WebJob>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+
+    <Warning Text="WebJob schedule for $(_projName) will not be created. WebJob schedules can only be created when the publish destination is an Azure Website" 
+             Condition="'$(_runMode)' == 'Scheduled' and '$(_DestinationType)' != 'AzureWebSite'"/>
+  </Target>
+
+  <Target Name="AddScheduledJobs"
+          AfterTargets="MSDeployPublish"
+          DependsOnTargets="$(AddScheduledJobsDependsOn)"
+          Condition="'@(WebJobs)' != '' and '$(_DestinationType)' == 'AzureWebSite'">
+
+      <ItemGroup>
+        <_DestFileSkips Remove="@(_DestFileSkips)"/>
+        <_FilesAddedByWebJobs Remove="@(_FilesAddedByWebJobs)"/>
+        <_JobsToSchedule Remove="@(_JobsToSchedule)"/>
+      </ItemGroup>
+
+      <GetFileSkips>
+        <Output ItemName="_DestFileSkips" TaskParameter="DestinationSkipItems"/>
+      </GetFileSkips>
+
+      <ItemGroup>
+        <_FilesAddedByWebJobs Include="@(FilesForPackagingFromProject)" Condition="'%(FromTarget)' == 'AddWebJobFilesToPublish'"/>
+      </ItemGroup>
+
+      <DeterminePublishedWebJobs SkippedFiles="@(_DestFileSkips)"
+                              AddedFiles="@(_FilesAddedByWebJobs)"
+                              ConfiguredJobs="@(WebJobs)">
+        <Output ItemName="_JobsToSchedule" TaskParameter="PublishedJobs"/>
+      </DeterminePublishedWebJobs>
+      
+      <GetScheduleMetadata Condition="'$(SubscriptionId)' == '' or '$(ManagementCertificate)' == ''">
+        <Output PropertyName="SubscriptionId" TaskParameter="SubscriptionId"/>
+        <Output PropertyName="ManagementCertificate" TaskParameter="ManagementCertificate"/>
+        <Output PropertyName="_ManagementToken" TaskParameter="ManagementToken"/>
+      </GetScheduleMetadata>
+
+      <MSBuild Projects="@(_JobsToSchedule)"
+               BuildInParallel="false"
+               Properties="WebSiteName=$(DeployIisAppPath);WebSiteUrl=$(SiteUrlToLaunchAfterPublish);FilePreview=$(FilePreview);WebJobPublishFromWAP=true;SubscriptionId=$(SubscriptionId);ManagementCertificatePath=$(ManagementCertificatePath);ManagementCertificatePassword=$(ManagementCertificatePassword);ManagementCertificate=$(ManagementCertificate);ManagementToken=$(_ManagementToken);PublishSettingsPath=$(PublishSettingsPath)"
+               Targets="AddScheduledJob"
+               Condition="'@(_JobsToSchedule)' != ''"/>
+  </Target>
+</Project>

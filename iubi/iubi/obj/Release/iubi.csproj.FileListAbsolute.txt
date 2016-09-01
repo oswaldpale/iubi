@@ -1,0 +1,53 @@
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.exe.config
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.exe
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\log4net.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\Newtonsoft.Json.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.Common.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.SocketBase.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.SocketEngine.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperWebSocket.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\log4net.xml
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\Newtonsoft.Json.xml
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.Common.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.SocketBase.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.SocketEngine.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperWebSocket.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperWebSocket.xml
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\Interop.DPFPShrXLib.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.csproj.ResolveComReference.cache
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.iubi.resources
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.csproj.GenerateResource.Cache
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.exe
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.exe.manifest
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.application
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.exe.manifest
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.application
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.csprojResolveAssemblyReference.cache
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.exe.config
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.exe.manifest
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.application
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.exe
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\iubi.pdb
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\log4net.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\Newtonsoft.Json.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.Common.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.SocketBase.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.SocketEngine.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperWebSocket.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\log4net.xml
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\Newtonsoft.Json.xml
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.Common.pdb
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.SocketBase.pdb
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperSocket.SocketEngine.pdb
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperWebSocket.pdb
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Release\SuperWebSocket.xml
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\Interop.DPFPShrXLib.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.csproj.ResolveComReference.cache
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.iubi.resources
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.csproj.GenerateResource.Cache
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.exe.manifest
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.application
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.exe
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Release\iubi.pdb

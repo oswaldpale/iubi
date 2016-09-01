@@ -1,0 +1,33 @@
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\iubi.exe.config
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\iubi.exe.manifest
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\iubi.application
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\iubi.exe
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\iubi.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\log4net.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\SuperSocket.Common.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\SuperSocket.SocketBase.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\SuperSocket.SocketEngine.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\SuperWebSocket.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\log4net.xml
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\SuperSocket.Common.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\SuperSocket.SocketBase.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\SuperSocket.SocketEngine.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\SuperWebSocket.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\SuperWebSocket.xml
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\Interop.DPFPShrXLib.dll
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.csproj.ResolveComReference.cache
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.iubi.resources
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.csproj.GenerateResource.Cache
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.exe.manifest
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.application
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.exe
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.pdb
+C:\Users\Usuario TI\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.csprojResolveAssemblyReference.cache
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\bin\Debug\iubi.exe.config
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\Interop.DPFPShrXLib.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.csproj.ResolveComReference.cache
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.exe
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.pdb
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\iubi\iubi\iubi\obj\Debug\iubi.csprojResolveAssemblyReference.cache
