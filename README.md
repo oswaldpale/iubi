@@ -2,12 +2,12 @@
 Es un servicio que corre en background en el cliente y este se manipula en el navegador por medio un socket local que interpreta instrucciones mediante javascript.
 
 
-.. image: http://cdn.toptenreviews.com/rev/prod/57931-u.are.u-4500-box.jpg
-  :alt: add-new-menu.png
+.. image: imagen.jpg
+  :alt: imagen.jpg
   :align: center
   
-  .. figure:: ../images/lights-camera-action_002.png
-    :alt: lights-camera-action.png
+  .. figure:: imagen.jpg
+    :alt: imagen.jpg
     :align: center
   
 que soporta el SDK digital persona,
